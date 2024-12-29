@@ -45,4 +45,6 @@ public class Regalo extends BaseEntity
 	{
 		this.consegne = consegne;
 	}
+
+
 }

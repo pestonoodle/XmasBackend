@@ -18,73 +18,12 @@ public class Consegna extends BaseEntity
 	@JoinColumn(name = "regalo_id")
 	private Regalo regalo;
 
-	private String paese;
 
-	private Valuta valuta;
+	private Regalo scegliRegalo(){
+		double min= bambino.getPuntiBonta()-(bambino.getPuntiBonta()*0.2);
+		double max= bambino.getPuntiBonta()+(bambino.getPuntiBonta()*0.2);
 
-	private final double velocitaSlitta= 3500 ; //kmh
-
-	private static Set<Consegna> totConsegne = new HashSet<>();
-
-	public Bambino getBambino()
-	{
-		return bambino;
+		// regalo regalo.getPunteggio()>min && regalo.getPunteggio()<max
 	}
 
-	public void setBambino(Bambino bambino)
-	{
-		this.bambino = bambino;
-	}
-
-	public Regalo getRegalo()
-	{
-		return regalo;
-	}
-
-	public void setRegalo(Regalo regalo)
-	{
-		this.regalo = regalo;
-	}
-
-	public String getPaese()
-	{
-		return paese;
-	}
-
-	public void setPaese(String paese)
-	{
-		this.paese = paese;
-
-		boolean alreadyExists = false;
-
-		for (Consegna c : totConsegne) {
-			if (c.getPaese().equals(this.paese)) {
-				alreadyExists = true;
-				break;
-			}
-			else totConsegne.add(c);
-		}
-
-	}
-
-	public Set<Consegna> getTotConsegne()
-	{
-		return totConsegne;
-	}
-
-
-	public Valuta getValuta()
-	{
-		return valuta;
-	}
-
-	public void setValuta(Valuta valuta)
-	{
-		this.valuta = valuta;
-	}
-
-	public double getVelocitaSlitta()
-	{
-		return velocitaSlitta;
-	}
 }
